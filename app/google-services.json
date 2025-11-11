@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1038370016595",
+    "project_id": "jogodeadivinhar",
+    "storage_bucket": "jogodeadivinhar.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1038370016595:android:df3d33bd7dea3242e8e5a6",
+        "android_client_info": {
+          "package_name": "com.example.jogodeadvinhar"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBZzXq1DVNGBiN2cwSVDg633eTcmDiwy6A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
