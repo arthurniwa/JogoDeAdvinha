@@ -28,6 +28,18 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.google.firebase.auth.ktx.auth // Import para o Logout
 import com.google.firebase.ktx.Firebase    // Import para o Logout
+import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.ArrowDropDown
+import androidx.compose.material.icons.filled.Close
+import androidx.compose.material.icons.filled.LocationOn
+import androidx.compose.material.icons.filled.Notifications
+import androidx.compose.material.icons.filled.Phone
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.material3.Switch
+import androidx.compose.material3.OutlinedTextField
 
 // Definição de Cores
 val corFundoRoxa = Color(0xFF6A1B9A)
@@ -105,8 +117,10 @@ fun Tela1_Inicial(navController: NavController) {
                     }
                     Spacer(Modifier.height(16.dp))
 
+                    BotaoMenu(text = "Configurações", icon = Icons.Default.Settings) {
+                        navController.navigate(Destino.TelaConfiguracoes.rota)}
                     BotaoMenu(text = "Ranking", icon = Icons.Default.Star) { /* TODO */ }
-                    BotaoMenu(text = "Configurações", icon = Icons.Default.Settings) { /* TODO */ }
+
 
                     Text(
                         text = "Acesso Restrito",
@@ -272,7 +286,7 @@ fun Tela2_LoginAdmin(navController: NavController, viewModel: ViewModelAdmin) {
                     // ** 3. MOSTRAR MENSAGEM DE ERRO **
                     if (estado.erroLogin != null) {
                         Text(
-                            text = estado.erroLogin,
+                            text = estado.erroLogin!!,
                             color = MaterialTheme.colorScheme.error, // Cor de erro padrão
                             textAlign = TextAlign.Center,
                             modifier = Modifier.padding(top = 16.dp)
