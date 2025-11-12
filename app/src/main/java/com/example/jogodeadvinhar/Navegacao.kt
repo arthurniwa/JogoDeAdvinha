@@ -12,6 +12,7 @@ import androidx.navigation.compose.rememberNavController
 sealed class Destino(val rota: String) {
     object TelaInicial : Destino("tela_inicial")
     object TelaAdmin : Destino("tela_admin")
+
     object PainelAdmin : Destino("tela_admin_painel")
     // object Ranking : Destino("ranking")
     object TelaConfiguracoes : Destino("tela_configuracoes")
@@ -45,7 +46,7 @@ fun NavegacaoApp() {
         }
 
         composable(Destino.PainelAdmin.rota) {
-            TelaAdminPainel(navController = navController)
+            PainelAdm(navController = navController)
         }
 
         composable(Destino.TelaJogar.rota) {
