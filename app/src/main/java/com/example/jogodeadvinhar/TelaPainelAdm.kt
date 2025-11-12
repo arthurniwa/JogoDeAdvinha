@@ -73,7 +73,16 @@ fun PainelAdm(navController: NavController) {
                     Text("Administrativo", style = MaterialTheme.typography.bodySmall, color = TextColor.copy(alpha = 0.8f))
                 }
             }
-            Text("Sair", color = TextColor, modifier = Modifier.clickable { /* Ação de Sair */ })
+            Text(
+                "Sair",
+                color = TextColor,
+                modifier = Modifier.clickable {
+                    Firebase.auth.signOut()
+                    navController.navigate(Destino.TelaInicial.rota) {
+                        popUpTo(0)
+                    }
+                }
+            )
         }
 
         // --- 1. BLOCO DO PERFIL ---
@@ -153,14 +162,6 @@ fun PainelAdm(navController: NavController) {
                 CardAcao(texto = "Gerenciar Usuários", icone = Icons.Outlined.Person)
             }
             Spacer(modifier = Modifier.height(10.dp))
-            // Linha 2
-            // Row(
-            //     modifier = Modifier.fillMaxWidth(),
-            //      horizontalArrangement = Arrangement.SpaceBetween
-            // ) {
-            //     CardAcao(texto = "Relatórios", icone = Icons.Outlined.Email)
-            //     CardAcao(texto = "Configurações", icone = Icons.Outlined.Settings)
-            // }
         }
     }
 }
