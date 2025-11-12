@@ -15,6 +15,8 @@ sealed class Destino(val rota: String) {
     object PainelAdmin : Destino("tela_admin_painel")
     // object Ranking : Destino("ranking")
     object TelaConfiguracoes : Destino("tela_configuracoes")
+
+    object TelaJogar : Destino("tela_jogar")
 }
 
 /**
@@ -44,6 +46,10 @@ fun NavegacaoApp() {
 
         composable(Destino.PainelAdmin.rota) {
             TelaAdminPainel(navController = navController)
+        }
+
+        composable(Destino.TelaJogar.rota) {
+            TelaJogar(navController = navController)
         }
     }
 }

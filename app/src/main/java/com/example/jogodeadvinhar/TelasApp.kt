@@ -1,6 +1,6 @@
-package com.example.jogodeadvinhar // Verifique seu pacote
+package com.example.jogodeadvinhar
 
-// Imports necessários
+
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -26,8 +26,8 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
-import com.google.firebase.auth.ktx.auth // Import para o Logout
-import com.google.firebase.ktx.Firebase    // Import para o Logout
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material.icons.filled.Close
@@ -107,7 +107,7 @@ fun Tela1_Inicial(navController: NavController) {
                     Spacer(Modifier.height(32.dp))
 
                     Button(
-                        onClick = { /* TODO */ },
+                        onClick = { navController.navigate(Destino.TelaJogar.rota) },
                         colors = ButtonDefaults.buttonColors(containerColor = corFundoRoxa),
                         modifier = Modifier.fillMaxWidth(),
                         shape = RoundedCornerShape(12.dp)
@@ -159,9 +159,7 @@ fun Tela1_Inicial(navController: NavController) {
     }
 }
 
-/**
- * Componente de Botão reutilizável para a Tela 1
- */
+
 @Composable
 fun BotaoMenu(text: String, icon: ImageVector, onClick: () -> Unit) {
     OutlinedButton(

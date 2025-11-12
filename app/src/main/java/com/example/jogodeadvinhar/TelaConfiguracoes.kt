@@ -44,20 +44,18 @@ import androidx.navigation.NavController
 @Composable
 fun TelaConfiguracoes(navController: NavController) {
 
-
     val musicaFundo = true
     val efeitosSonoros = true
     val notificacoes = true
     val temaEscuro = false
     val idioma = "PT"
 
-
     Scaffold(
         topBar = {
             TopAppBar(
                 title = { Text("Voltar") },
                 navigationIcon = {
-                    IconButton(onClick = { navController.popBackStack() }) { // Botão de voltar
+                    IconButton(onClick = { navController.popBackStack() }) {
                         Icon(Icons.Default.ArrowBack, contentDescription = "Voltar")
                     }
                 },
@@ -74,10 +72,9 @@ fun TelaConfiguracoes(navController: NavController) {
             modifier = Modifier
                 .fillMaxSize()
                 .padding(innerPadding)
-                .padding(16.dp),
+                .padding(horizontal = 16.dp, vertical = 24.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            // Cartão Branco Principal
             Surface(
                 shape = RoundedCornerShape(20.dp),
                 color = Color.White,
@@ -91,7 +88,6 @@ fun TelaConfiguracoes(navController: NavController) {
                         .padding(horizontal = 24.dp, vertical = 32.dp)
                         .fillMaxWidth()
                 ) {
-                    // Títulos
                     Text(
                         text = "Configurações",
                         fontSize = 24.sp,
@@ -101,64 +97,91 @@ fun TelaConfiguracoes(navController: NavController) {
                     Text(
                         text = "Personalize sua experiência",
                         fontSize = 14.sp,
-                        color = Color.Gray
+                        color = Color.Gray,
+                        modifier = Modifier.padding(bottom = 24.dp)
                     )
+
+                    Surface(
+                        shape = RoundedCornerShape(12.dp),
+                        color = Color(0xFFF0F0F0).copy(alpha = 0.5f),
+                        modifier = Modifier.fillMaxWidth(),
+                        shadowElevation = 1.dp
+                    ) {
+                        Column(modifier = Modifier.padding(16.dp)) {
+                            ConfigSectionTitle(icon = Icons.Default.Notifications, title = "Som e Áudio")
+                            Spacer(Modifier.height(8.dp))
+                            ConfigRowSwitch(
+                                title = "Música de Fundo",
+                                checked = musicaFundo,
+                                onCheckedChange = {}
+                            )
+                            ConfigRowSwitch(
+                                title = "Efeitos Sonoros",
+                                checked = efeitosSonoros,
+                                onCheckedChange = {}
+                            )
+                        }
+                    }
                     Spacer(Modifier.height(24.dp))
 
-                    // Seção 1: Som e Áudio
-                    ConfigSectionTitle(icon = Icons.Default.Phone, title = "Som e Áudio")
-                    ConfigRowSwitch(
-                        title = "Música de Fundo",
-                        checked = musicaFundo,
-                        onCheckedChange = {} // Não faz nada
-                    )
-                    ConfigRowSwitch(
-                        title = "Efeitos Sonoros",
-                        checked = efeitosSonoros,
-                        onCheckedChange = {} // Não faz nada
-                    )
+                    Surface(
+                        shape = RoundedCornerShape(12.dp),
+                        color = Color(0xFFF0F0F0).copy(alpha = 0.5f),
+                        modifier = Modifier.fillMaxWidth(),
+                        shadowElevation = 1.dp
+                    ) {
+                        Column(modifier = Modifier.padding(16.dp)) {
+                            ConfigSectionTitle(icon = Icons.Default.Notifications, title = "Notificações")
+                            Spacer(Modifier.height(8.dp))
+                            ConfigRowSwitch(
+                                title = "Ativar Notificações",
+                                checked = notificacoes,
+                                onCheckedChange = {}
+                            )
+                        }
+                    }
                     Spacer(Modifier.height(24.dp))
-
-                    // Seção 2: Notificações
-                    ConfigSectionTitle(icon = Icons.Default.Notifications, title = "Notificações")
-                    ConfigRowSwitch(
-                        title = "Ativar Notificações",
-                        checked = notificacoes,
-                        onCheckedChange = {} // Não faz nada
-                    )
-                    Spacer(Modifier.height(24.dp))
-
 
                     Row(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.spacedBy(16.dp)
                     ) {
-                        // Coluna Tema
-                        Column(modifier = Modifier.weight(1f)) {
-                            ConfigSectionTitle(icon = Icons.Default.Close, title = "Tema")
-                            Switch(
-                                checked = temaEscuro,
-                                onCheckedChange = {}, // Não faz nada
-                                modifier = Modifier.padding(top = 8.dp)
-                            )
+                        Surface(
+                            shape = RoundedCornerShape(12.dp),
+                            color = Color(0xFFF0F0F0).copy(alpha = 0.5f),
+                            modifier = Modifier.weight(1f),
+                            shadowElevation = 1.dp
+                        ) {
+                            Column(modifier = Modifier.padding(16.dp)) {
+                                ConfigSectionTitle(icon = Icons.Default.Close, title = "Tema")
+                                Switch(
+                                    checked = temaEscuro,
+                                    onCheckedChange = {},
+                                    modifier = Modifier.padding(top = 8.dp)
+                                )
+                            }
                         }
-
-                        Column(modifier = Modifier.weight(1f)) {
-                            ConfigSectionTitle(icon = Icons.Default.LocationOn, title = "Idioma")
-
-                            OutlinedTextField(
-                                value = idioma,
-                                onValueChange = {}, // Não faz nada
-                                readOnly = true,
-                                trailingIcon = { Icon(Icons.Default.ArrowDropDown, null) },
-                                modifier = Modifier.padding(top = 8.dp)
-                            )
+                        Surface(
+                            shape = RoundedCornerShape(12.dp),
+                            color = Color(0xFFF0F0F0).copy(alpha = 0.5f),
+                            modifier = Modifier.weight(1f),
+                            shadowElevation = 1.dp
+                        ) {
+                            Column(modifier = Modifier.padding(16.dp)) {
+                                ConfigSectionTitle(icon = Icons.Default.LocationOn, title = "Idioma")
+                                OutlinedTextField(
+                                    value = idioma,
+                                    onValueChange = {},
+                                    readOnly = true,
+                                    trailingIcon = { Icon(Icons.Default.ArrowDropDown, null) },
+                                    modifier = Modifier.padding(top = 8.dp)
+                                )
+                            }
                         }
                     }
 
                     Spacer(Modifier.weight(1f))
 
-                    // Botão Salvar
                     Button(
                         onClick = { navController.popBackStack() },
                         colors = ButtonDefaults.buttonColors(containerColor = corFundoRoxa),
@@ -173,6 +196,7 @@ fun TelaConfiguracoes(navController: NavController) {
     }
 }
 
+
 @Composable
 fun ConfigSectionTitle(icon: ImageVector, title: String) {
     Row(verticalAlignment = Alignment.CenterVertically) {
@@ -180,9 +204,7 @@ fun ConfigSectionTitle(icon: ImageVector, title: String) {
         Spacer(Modifier.width(8.dp))
         Text(title, fontSize = 18.sp, fontWeight = FontWeight.SemiBold, color = Color.Black)
     }
-    Spacer(Modifier.height(12.dp))
 }
-
 
 @Composable
 fun ConfigRowSwitch(title: String, checked: Boolean, onCheckedChange: (Boolean) -> Unit) {
