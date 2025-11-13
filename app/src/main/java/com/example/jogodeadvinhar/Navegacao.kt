@@ -58,7 +58,7 @@ fun NavegacaoApp() {
         }
 
         composable(Destino.TelaJogo.rota) {
-            TelaJogo()
+            TelaJogo(navController = navController)
         }
 
     }
