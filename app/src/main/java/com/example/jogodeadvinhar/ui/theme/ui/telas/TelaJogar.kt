@@ -74,8 +74,8 @@ fun TelaJogar(navController: NavController) {
                     IconButton(onClick = { navController.popBackStack() }) {
                         Icon(Icons.Default.Home, contentDescription = "Início")
                     }
-                    IconButton(onClick = { /* TODO: Navegar para Ranking */ }) {
-                        Icon(Icons.Default.Star, contentDescription = "Ranking")
+                    IconButton(onClick = {}) {
+                        Icon(Icons.Default.Star, contentDescription = "Star")
                     }
                     IconButton(onClick = { navController.navigate(Destino.TelaConfiguracoes.rota) }) {
                         Icon(Icons.Default.Settings, contentDescription = "Configurações")
