@@ -8,14 +8,13 @@ import com.example.jogodeadvinhar.NomeDAO
 import com.example.jogodeadvinhar.Nome
 
 @Database(
-    //entities = [Pontuacao::class, Nome::class, Lista::class],
-    entities = [Nome::class, Lista::class],
+    entities = [Pontuacao::class, Nome::class, Lista::class],
 
     version = 3
 )
 abstract class AppDatabase : RoomDatabase() {
 
-    //abstract fun pontuacaoDAO(): PontuacaoDAO
+    abstract fun pontuacaoDAO(): PontuacaoDAO
     abstract fun nomeDAO(): NomeDAO
 
     abstract fun listaDAO(): ListaDAO

@@ -113,7 +113,7 @@ fun TelaJogar(navController: NavController) {
                     )
                     Spacer(Modifier.height(16.dp))
 
-                    // Opção 1: Imagem
+                    // Jogo da Imagem
                     ModoJogoItem(
                         text = "Adivinhação de Imagem",
                         icon = Icons.Default.AccountBox,
@@ -121,14 +121,31 @@ fun TelaJogar(navController: NavController) {
                     )
                     Spacer(Modifier.height(12.dp))
 
-                    // Opção 2: Palavra
                     ModoJogoItem(
                         text = "Adivinhação de Palavra",
                         icon = Icons.Default.Edit, // Ícone para texto
                         isSelected = modoSelecionado == "palavra"
                     )
+
+                    Spacer(Modifier.height(24.dp))
+
+                    Button(
+                        onClick = {
+                            navController.navigate(Destino.TelaJogo.rota)
+                        },
+                        colors = ButtonDefaults.buttonColors(containerColor = corBotaoLaranja),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(56.dp),
+                        shape = RoundedCornerShape(16.dp)
+                    ) {
+                        Icon(Icons.Default.PlayArrow, contentDescription = null)
+                        Spacer(Modifier.width(8.dp))
+                        Text("COMEÇAR", fontSize = 16.sp, fontWeight = FontWeight.Bold)
+                    }
                 }
             }
+
 
             // Cartões 2 e 3: Nível e Tempo
             Row(

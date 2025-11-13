@@ -18,6 +18,10 @@ sealed class Destino(val rota: String) {
     object TelaConfiguracoes : Destino("tela_configuracoes")
 
     object TelaJogar : Destino("tela_jogar")
+
+    object TelaJogo : Destino("tela_jogo_imagem")
+
+
 }
 
 /**
@@ -52,5 +56,10 @@ fun NavegacaoApp() {
         composable(Destino.TelaJogar.rota) {
             TelaJogar(navController = navController)
         }
+
+        composable(Destino.TelaJogo.rota) {
+            TelaJogo()
+        }
+
     }
 }
