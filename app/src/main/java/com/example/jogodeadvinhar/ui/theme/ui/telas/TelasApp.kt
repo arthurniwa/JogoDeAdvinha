@@ -40,7 +40,7 @@ val corBotaoLaranja = Color(0xFFF57C00)
 val corCartaoBranco = Color.White
 val corBordaBotaoClaro = Color(0xFFFFF3E0)
 
-// --- TELA 1: INICIAL (Não muda) ---
+// -------------------------- TELA 1 
 @Composable
 fun Tela1_Inicial(navController: NavController) {
     Box(
@@ -170,7 +170,7 @@ fun BotaoMenu(text: String, icon: ImageVector, onClick: () -> Unit) {
 }
 
 
-// --- TELA 2: LOGIN ADMIN (Versão com Firebase) ---
+// --------------------------- TELA 2
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Tela2_LoginAdmin(navController: NavController, viewModel: ViewModelAdmin) {
@@ -225,7 +225,7 @@ fun Tela2_LoginAdmin(navController: NavController, viewModel: ViewModelAdmin) {
                         .fillMaxWidth(),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    // ... (Ícone e Textos da tela de login) ...
+                    
                     Icon(
                         imageVector = Icons.Default.Lock,
                         contentDescription = "Cadeado",
@@ -250,7 +250,7 @@ fun Tela2_LoginAdmin(navController: NavController, viewModel: ViewModelAdmin) {
                         modifier = Modifier.padding(bottom = 24.dp)
                     )
 
-                    // ** 2. CAMPOS ATUALIZADOS **
+                    // -------------------- CAMPOS ATUALIZADOS 
                     OutlinedTextField(
                         value = estado.usuario,
                         onValueChange = { viewModel.aoMudarUsuario(it) },
@@ -274,7 +274,7 @@ fun Tela2_LoginAdmin(navController: NavController, viewModel: ViewModelAdmin) {
                         isError = estado.erroLogin != null  // Marca erro
                     )
 
-                    // ** 3. MOSTRAR MENSAGEM DE ERRO **
+                    // --------------- MOSTRA MENSAGEM DE ERRO
                     if (estado.erroLogin != null) {
                         Text(
                             text = estado.erroLogin!!,
@@ -286,7 +286,7 @@ fun Tela2_LoginAdmin(navController: NavController, viewModel: ViewModelAdmin) {
                         Spacer(Modifier.height(24.dp))
                     }
 
-                    // ** 4. BOTÃO COM ESTADO DE LOADING **
+                    // ----------------- BOTÃO COM ESTADO DE CARREGAR 
                     Button(
                         onClick = { viewModel.tentarLogin() },
                         colors = ButtonDefaults.buttonColors(containerColor = corBotaoLaranja),
@@ -324,7 +324,7 @@ fun Tela2_LoginAdmin(navController: NavController, viewModel: ViewModelAdmin) {
     }
 }
 
-// --- TELA 3: PAINEL ADMIN ---
+// ------------------------ TELA 3 PAINEL ADMIN
 @Composable
 fun TelaAdminPainel(navController: NavController) {
     Box(
