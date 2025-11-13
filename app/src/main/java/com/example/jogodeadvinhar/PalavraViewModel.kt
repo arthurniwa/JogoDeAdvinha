@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.asStateFlow
 
 class PalavraViewModel : ViewModel() {
 
-    private val palavras = listOf(
+    private val todasPalavras = listOf(
         "Leão",
         "Tigre",
         "Elefante",
@@ -17,14 +17,7 @@ class PalavraViewModel : ViewModel() {
         "Coelho",
         "Urso",
         "Panda"
-    ).shuffled()
-
-
-
-    private var indiceAtual = 0
-
-    private val _palavraCorreta = MutableStateFlow(palavras[indiceAtual])
-    val palavraCorreta = _palavraCorreta.asStateFlow()
+    )
 
     private val _mensagem = MutableStateFlow("")
     val mensagem = _mensagem.asStateFlow()
@@ -33,24 +26,32 @@ class PalavraViewModel : ViewModel() {
     val acertos = _acertos.asStateFlow()
 
     fun verificarPalavra(entrada: String) {
-        if (entrada.equals(_palavraCorreta.value, ignoreCase = true)) {
-            _mensagem.value = "Acertou!"
-            _acertos.value = _acertos.value + _palavraCorreta.value
+        val palavra = entrada.trim()
 
-            if (indiceAtual < palavras.lastIndex) {
-                indiceAtual++
-                _palavraCorreta.value = palavras[indiceAtual]
-            } else {
-                _mensagem.value = "🏆 Você venceu!"
+        when {
+            // Se já acertou essa palavra antes
+            _acertos.value.any { it.equals(palavra, ignoreCase = true) } -> {
+                _mensagem.value = "Você já acertou '$palavra'!"
             }
-        } else {
-            _mensagem.value = "Errou! Tente novamente."
+
+            // Se a palavra existe na lista
+            todasPalavras.any { it.equals(palavra, ignoreCase = true) } -> {
+                _mensagem.value = "Acertou!"
+                _acertos.value = _acertos.value + palavra
+
+                // Se já acertou todas
+                if (_acertos.value.size == todasPalavras.size) {
+                    _mensagem.value = "🏆 Você venceu!"
+                }
+            }
+
+            else -> {
+                _mensagem.value = "Errou! Tente novamente."
+            }
         }
     }
 
     fun novaRodada() {
-        indiceAtual = 0
-        _palavraCorreta.value = palavras[indiceAtual]
         _mensagem.value = ""
         _acertos.value = emptyList()
     }
