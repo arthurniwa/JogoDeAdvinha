@@ -31,6 +31,10 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -44,11 +48,12 @@ import androidx.navigation.NavController
 @Composable
 fun TelaConfiguracoes(navController: NavController) {
 
-    val musicaFundo = true
-    val efeitosSonoros = true
-    val notificacoes = true
-    val temaEscuro = false
-    val idioma = "PT"
+    var musicaFundo by remember { mutableStateOf(true) }
+    var efeitosSonoros by remember { mutableStateOf(true) }
+    var notificacoes by remember { mutableStateOf(true) }
+    var temaEscuro by remember { mutableStateOf(true) }
+    val idioma by remember { mutableStateOf("PT") }
+
 
     Scaffold(
         topBar = {
@@ -113,12 +118,12 @@ fun TelaConfiguracoes(navController: NavController) {
                             ConfigRowSwitch(
                                 title = "Música de Fundo",
                                 checked = musicaFundo,
-                                onCheckedChange = {}
+                                onCheckedChange = { musicaFundo = it}
                             )
                             ConfigRowSwitch(
                                 title = "Efeitos Sonoros",
                                 checked = efeitosSonoros,
-                                onCheckedChange = {}
+                                onCheckedChange = {efeitosSonoros = it}
                             )
                         }
                     }
@@ -136,7 +141,7 @@ fun TelaConfiguracoes(navController: NavController) {
                             ConfigRowSwitch(
                                 title = "Ativar Notificações",
                                 checked = notificacoes,
-                                onCheckedChange = {}
+                                onCheckedChange = {notificacoes = it}
                             )
                         }
                     }
@@ -156,7 +161,7 @@ fun TelaConfiguracoes(navController: NavController) {
                                 ConfigSectionTitle(icon = Icons.Default.Close, title = "Tema")
                                 Switch(
                                     checked = temaEscuro,
-                                    onCheckedChange = {},
+                                    onCheckedChange = { temaEscuro = it },
                                     modifier = Modifier.padding(top = 8.dp)
                                 )
                             }

@@ -2,12 +2,17 @@ package com.example.jogodeadvinhar
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -21,9 +26,9 @@ import androidx.navigation.NavController
 @Composable
 fun TelaJogar(navController: NavController) {
 
-    val modoSelecionado = "imagem"
-    val nivel = "15+"
-    val tempo = "5 min"
+    var modoSelecionado by remember {mutableStateOf("imagem")}
+    var nivel by remember {mutableStateOf("15+")}
+    var tempo by remember {mutableStateOf("5 min")}
 
     Scaffold(
         topBar = {
@@ -45,11 +50,6 @@ fun TelaJogar(navController: NavController) {
                 navigationIcon = {
                     IconButton(onClick = { navController.popBackStack() }) {
                         Icon(Icons.Default.ArrowBack, contentDescription = "Voltar")
-                    }
-                },
-                actions = {
-                    IconButton(onClick = { navController.navigate(Destino.TelaConfiguracoes.rota) }) {
-                        Icon(Icons.Default.Settings, contentDescription = "Configurações")
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
@@ -111,14 +111,16 @@ fun TelaJogar(navController: NavController) {
                     ModoJogoItem(
                         text = "Adivinhação de Imagem",
                         icon = Icons.Default.AccountBox,
-                        isSelected = modoSelecionado == "imagem"
+                        isSelected = modoSelecionado == "imagem",
+                        onClick = { modoSelecionado = "imagem"}
                     )
                     Spacer(Modifier.height(12.dp))
 
                     ModoJogoItem(
                         text = "Adivinhação de Palavra",
                         icon = Icons.Default.Edit,
-                        isSelected = modoSelecionado == "palavra"
+                        isSelected = modoSelecionado == "palavra",
+                        onClick = { modoSelecionado = "palavra"}
                     )
 
                     Spacer(Modifier.height(24.dp))
@@ -149,22 +151,55 @@ fun TelaJogar(navController: NavController) {
                     icon = Icons.Default.KeyboardArrowUp,
                     title = "Nível",
                     value = nivel,
-                    modifier = Modifier.weight(1f)
+                    modifier = Modifier.weight(1f),
+                    onClick = {
+                        nivel = when (nivel) {
+                            "15+" -> "10"
+                            "10" -> "5"
+                            else -> "15+"
+                        }
+                    }
                 )
 
                 InfoCard(
                     icon = Icons.Default.DateRange,
                     title = "Tempo Médio",
                     value = tempo,
-                    modifier = Modifier.weight(1f)
+                    modifier = Modifier.weight(1f),
+                    onClick = {
+                        tempo = when(tempo){
+                            "5 min" -> "10 min"
+                            "10 min" -> "15 min"
+                            else -> "5"
+                        }
+                    }
                 )
             }
+            Spacer(Modifier.weight(1f))
+
+            Button(
+                onClick = { /*TODO*/},
+                colors = ButtonDefaults.buttonColors(containerColor = corBotaoLaranja),
+                modifier = Modifier.fillMaxWidth().height(56.dp),
+                shape = RoundedCornerShape(16.dp)
+            ) {
+                Icon(Icons.Default.PlayArrow, contentDescription = null)
+                Spacer(Modifier.width(8.dp))
+                Text("CONTINUAR", fontSize = 16.sp, fontWeight = FontWeight.Bold)
+            }
+
         }
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ModoJogoItem(text: String, icon: ImageVector, isSelected: Boolean) {
+fun ModoJogoItem(
+    text: String,
+    icon: ImageVector,
+    isSelected: Boolean,
+    onClick: () -> Unit
+) {
     val borderColor = if (isSelected) Color(0xFF4CAF50) else Color.LightGray
     val contentColor = if (isSelected) Color.Black else Color.Gray
     val iconColor = if (isSelected) borderColor else Color.Gray
@@ -173,7 +208,9 @@ fun ModoJogoItem(text: String, icon: ImageVector, isSelected: Boolean) {
         shape = RoundedCornerShape(12.dp),
         color = Color.Transparent,
         border = BorderStroke(2.dp, borderColor),
-        modifier = Modifier.fillMaxWidth()
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable(onClick = onClick)
     ) {
         Row(
             modifier = Modifier.padding(16.dp),
@@ -198,7 +235,7 @@ fun ModoJogoItem(text: String, icon: ImageVector, isSelected: Boolean) {
             )
             RadioButton(
                 selected = isSelected,
-                onClick = { /* Não faz nada */ },
+                onClick = onClick,
                 colors = RadioButtonDefaults.colors(selectedColor = borderColor)
             )
         }
@@ -211,7 +248,8 @@ fun InfoCard(
     icon: ImageVector,
     title: String,
     value: String,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onClick: () -> Unit
 ) {
     Surface(
         shape = RoundedCornerShape(20.dp),
@@ -226,13 +264,22 @@ fun InfoCard(
                 Text(title, fontSize = 14.sp, color = Color.Gray)
             }
             Spacer(Modifier.height(8.dp))
-            OutlinedTextField(
-                value = value,
-                onValueChange = {},
-                readOnly = true,
-                trailingIcon = { Icon(Icons.Default.ArrowDropDown, null) },
-                modifier = Modifier.fillMaxWidth()
-            )
+
+            Box(modifier = Modifier.clickable(onClick = onClick)) {
+                OutlinedTextField(
+                    value = value,
+                    onValueChange = { },
+                    readOnly = true,
+                    trailingIcon = { Icon(Icons.Default.ArrowDropDown, null) },
+                    modifier = Modifier.fillMaxWidth(),
+                    enabled = false,
+                    colors = OutlinedTextFieldDefaults.colors(
+                        disabledBorderColor = MaterialTheme.colorScheme.outline,
+                        disabledTextColor = MaterialTheme.colorScheme.onSurface,
+                        disabledTrailingIconColor = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                )
+            }
         }
     }
 }
