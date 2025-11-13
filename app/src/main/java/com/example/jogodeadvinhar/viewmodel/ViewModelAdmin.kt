@@ -9,10 +9,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 
-/**
- * Data Class que guarda o estado da UI para o login.
- * Agora inclui estados para loading, erro e sucesso.
- */
+ 
 data class EstadoUiAdmin(
     val usuario: String = "",
     val senha: String = "",
@@ -21,9 +18,7 @@ data class EstadoUiAdmin(
     val erroLogin: String? = null       // Para mostrar mensagens de erro
 )
 
-/**
- * ViewModel que gerencia o estado e a lógica de login com Firebase.
- */
+
 class ViewModelAdmin : ViewModel() {
 
     // Instância da autenticação do Firebase
@@ -46,9 +41,7 @@ class ViewModelAdmin : ViewModel() {
         }
     }
 
-    /**
-     * Lógica de negócios para tentar o login com Firebase.
-     */
+  
     fun tentarLogin() {
         val email = estadoUi.value.usuario
         val senha = estadoUi.value.senha
@@ -75,9 +68,9 @@ class ViewModelAdmin : ViewModel() {
                         )
                     }
                 } else {
-                    // FALHA!
-                    // Damos uma mensagem genérica para segurança.
-                    // (task.exception?.message pode vazar infos, ex: "usuário não encontrado")
+                  
+               
+           
                     _estadoUi.update {
                         it.copy(
                             sucessoLogin = false,
