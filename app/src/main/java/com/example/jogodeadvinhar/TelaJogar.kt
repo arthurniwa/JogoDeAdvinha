@@ -127,7 +127,11 @@ fun TelaJogar(navController: NavController) {
 
                     Button(
                         onClick = {
-                            navController.navigate(Destino.TelaJogo.rota)
+                            if (modoSelecionado == "imagem") {
+                                navController.navigate(Destino.TelaJogo.rota)
+                            } else if (modoSelecionado == "palavra") {
+                                navController.navigate(Destino.TelaJogoPalavras.rota)
+                            }
                         },
                         colors = ButtonDefaults.buttonColors(containerColor = corBotaoLaranja),
                         modifier = Modifier
@@ -139,6 +143,7 @@ fun TelaJogar(navController: NavController) {
                         Spacer(Modifier.width(8.dp))
                         Text("COMEÇAR", fontSize = 16.sp, fontWeight = FontWeight.Bold)
                     }
+
                 }
             }
 
