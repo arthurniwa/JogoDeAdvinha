@@ -112,7 +112,7 @@ fun Tela1_Inicial(navController: NavController) {
 
                     BotaoMenu(text = "Configurações", icon = Icons.Default.Settings) {
                         navController.navigate(Destino.TelaConfiguracoes.rota)}
-                    BotaoMenu(text = "Ranking", icon = Icons.Default.Star) { /* TODO */ }
+
 
 
                     Text(
