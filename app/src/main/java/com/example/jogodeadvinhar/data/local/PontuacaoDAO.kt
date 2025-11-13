@@ -1,11 +1,10 @@
-package com.example.jogodeadvinhar
+package com.example.jogodeadvinhar.data.local
 
 import androidx.room.Dao
-import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
-import androidx.room.Update
 import androidx.room.OnConflictStrategy // necessário para OnConflictStrategy
+import com.example.jogodeadvinhar.data.model.Pontuacao
 import kotlinx.coroutines.flow.Flow
 
 @Dao

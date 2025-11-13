@@ -5,6 +5,14 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.jogodeadvinhar.ui.theme.ui.telas.PainelAdm
+import com.example.jogodeadvinhar.ui.theme.ui.telas.Tela1_Inicial
+import com.example.jogodeadvinhar.ui.theme.ui.telas.Tela2_LoginAdmin
+import com.example.jogodeadvinhar.ui.theme.ui.telas.TelaConfiguracoes
+import com.example.jogodeadvinhar.ui.theme.ui.telas.TelaJogar
+import com.example.jogodeadvinhar.ui.theme.ui.telas.TelaJogo
+import com.example.jogodeadvinhar.ui.theme.ui.telas.TelaJogoPalavras
+import com.example.jogodeadvinhar.viewmodel.ViewModelAdmin
 
 /**
  * Define todas as rotas/telas do app.

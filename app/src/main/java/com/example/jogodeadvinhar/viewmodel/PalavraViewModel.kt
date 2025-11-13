@@ -1,4 +1,4 @@
-package com.example.jogodeadvinhar
+package com.example.jogodeadvinhar.viewmodel
 
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.asStateFlow
 class PalavraViewModel : ViewModel() {
 
     private val todasPalavras = listOf(
-        "Leão",
+        "Peixe",
         "Tigre",
         "Elefante",
         "Girafa",

@@ -1,4 +1,4 @@
-package com.example.jogodeadvinhar
+package com.example.jogodeadvinhar.data.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

@@ -1,14 +1,14 @@
-package com.example.jogodeadvinhar
+package com.example.jogodeadvinhar.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import com.example.jogodeadvinhar.PontuacaoRepository
+import com.example.jogodeadvinhar.data.model.Pontuacao
+import com.example.jogodeadvinhar.data.repositorio.PontuacaoRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 data class Imagem(

@@ -1,4 +1,4 @@
-package com.example.jogodeadvinhar
+package com.example.jogodeadvinhar.ui.theme.ui.telas
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
@@ -21,6 +21,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.jogodeadvinhar.Destino
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

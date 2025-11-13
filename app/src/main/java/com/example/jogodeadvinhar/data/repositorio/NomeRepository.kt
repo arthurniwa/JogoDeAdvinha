@@ -1,7 +1,7 @@
-package com.example.jogodeadvinhar
+package com.example.jogodeadvinhar.data.repositorio
 
-import com.example.jogodeadvinhar.Nome
-import com.example.jogodeadvinhar.NomeDAO
+import com.example.jogodeadvinhar.data.local.NomeDAO
+import com.example.jogodeadvinhar.data.model.Nome
 
 class NomeRepository(private val nomeDao: NomeDAO) {
 

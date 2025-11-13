@@ -1,4 +1,4 @@
-package com.example.jogodeadvinhar
+package com.example.jogodeadvinhar.ui.theme.ui.telas
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -13,6 +13,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -20,6 +21,12 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import com.example.jogodeadvinhar.viewmodel.Imagem
+import com.example.jogodeadvinhar.viewmodel.JogoViewModel
+import com.example.jogodeadvinhar.viewmodel.JogoViewModelFactory
+import com.example.jogodeadvinhar.R
+import com.example.jogodeadvinhar.data.local.AppDatabase
+import com.example.jogodeadvinhar.data.repositorio.PontuacaoRepository
 
 @Composable
 fun TelaJogo(modifier: Modifier = Modifier,
@@ -153,7 +160,7 @@ fun TelaJogo(modifier: Modifier = Modifier,
                                 modifier = Modifier
                                     .fillMaxSize()
                                     .padding(8.dp),
-                                contentScale = androidx.compose.ui.layout.ContentScale.Fit,
+                                contentScale = ContentScale.Fit,
                                 alignment = Alignment.Center
                             )
                         }
@@ -310,7 +317,7 @@ fun GameCard(imagem: Imagem, hiddenCardColor: Color, onClick: () -> Unit) {
                     painter = painter,
                     contentDescription = null,
                     modifier = Modifier.fillMaxSize(),
-                    contentScale = androidx.compose.ui.layout.ContentScale.Crop
+                    contentScale = ContentScale.Crop
                 )
             } else {
                 Box(

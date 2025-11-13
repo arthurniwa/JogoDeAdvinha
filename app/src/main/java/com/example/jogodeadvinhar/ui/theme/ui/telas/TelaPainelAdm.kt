@@ -1,4 +1,4 @@
-package com.example.jogodeadvinhar
+package com.example.jogodeadvinhar.ui.theme.ui.telas
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -8,11 +8,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.Settings
-import androidx.compose.material.icons.outlined.Email
 import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material.icons.outlined.Person
-import androidx.compose.material.icons.outlined.Settings
-import androidx.compose.material.icons.outlined.Settings as SettingsOutline
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -26,6 +23,12 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import com.example.jogodeadvinhar.Destino
+import com.example.jogodeadvinhar.viewmodel.NomeUiState
+import com.example.jogodeadvinhar.viewmodel.NomeViewModel
+import com.example.jogodeadvinhar.viewmodel.NomeViewModelFactory
+import com.example.jogodeadvinhar.data.local.AppDatabase
+import com.example.jogodeadvinhar.data.repositorio.NomeRepository
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 

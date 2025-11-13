@@ -1,8 +1,10 @@
-package com.example.jogodeadvinhar
+package com.example.jogodeadvinhar.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
+import com.example.jogodeadvinhar.data.model.Nome
+import com.example.jogodeadvinhar.data.repositorio.NomeRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

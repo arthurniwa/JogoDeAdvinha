@@ -1,4 +1,4 @@
-package com.example.jogodeadvinhar
+package com.example.jogodeadvinhar.ui.theme.ui.telas
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -18,6 +18,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.jogodeadvinhar.viewmodel.AlterarListaViewModel
+import com.example.jogodeadvinhar.viewmodel.AlterarListaViewModelFactory
+import com.example.jogodeadvinhar.data.local.AppDatabase
+import com.example.jogodeadvinhar.data.repositorio.ListaRepository
 
 @Composable
 fun TelaLista() {

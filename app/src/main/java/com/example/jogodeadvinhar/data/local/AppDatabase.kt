@@ -1,11 +1,12 @@
-package com.example.jogodeadvinhar
+package com.example.jogodeadvinhar.data.local
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.jogodeadvinhar.NomeDAO
-import com.example.jogodeadvinhar.Nome
+import com.example.jogodeadvinhar.data.model.Lista
+import com.example.jogodeadvinhar.data.model.Nome
+import com.example.jogodeadvinhar.data.model.Pontuacao
 
 @Database(
     entities = [Pontuacao::class, Nome::class, Lista::class],

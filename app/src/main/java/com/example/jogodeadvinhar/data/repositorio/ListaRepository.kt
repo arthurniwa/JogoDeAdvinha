@@ -1,5 +1,7 @@
-package com.example.jogodeadvinhar
+package com.example.jogodeadvinhar.data.repositorio
 
+import com.example.jogodeadvinhar.data.local.ListaDAO
+import com.example.jogodeadvinhar.data.model.Lista
 import kotlinx.coroutines.flow.Flow
 
 class ListaRepository(private val dao: ListaDAO) {

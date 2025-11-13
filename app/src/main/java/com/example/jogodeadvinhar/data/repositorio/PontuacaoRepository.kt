@@ -1,5 +1,7 @@
-package com.example.jogodeadvinhar
+package com.example.jogodeadvinhar.data.repositorio
 
+import com.example.jogodeadvinhar.data.local.PontuacaoDAO
+import com.example.jogodeadvinhar.data.model.Pontuacao
 import kotlinx.coroutines.flow.Flow
 
 class PontuacaoRepository(private val pontuacaoDAO: PontuacaoDAO) {

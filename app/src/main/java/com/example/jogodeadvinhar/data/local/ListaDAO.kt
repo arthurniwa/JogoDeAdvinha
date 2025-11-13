@@ -1,6 +1,7 @@
-package com.example.jogodeadvinhar
+package com.example.jogodeadvinhar.data.local
 
 import androidx.room.*
+import com.example.jogodeadvinhar.data.model.Lista
 import kotlinx.coroutines.flow.Flow
 
 @Dao

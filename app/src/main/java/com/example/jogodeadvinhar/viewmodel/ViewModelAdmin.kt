@@ -1,4 +1,4 @@
-package com.example.jogodeadvinhar // Verifique seu pacote
+package com.example.jogodeadvinhar.viewmodel // Verifique seu pacote
 
 import androidx.lifecycle.ViewModel
 import com.google.firebase.auth.FirebaseAuth

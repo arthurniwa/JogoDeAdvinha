@@ -1,4 +1,4 @@
-package com.example.jogodeadvinhar
+package com.example.jogodeadvinhar.ui.theme.ui.telas
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -12,13 +12,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import com.example.jogodeadvinhar.viewmodel.PalavraViewModel
 
 @Composable
 fun TelaJogoPalavras(viewModel: PalavraViewModel = viewModel(),
                      navController: NavController) {
 
     val mensagem by viewModel.mensagem.collectAsState()
-    val palavraCorreta by viewModel.palavraCorreta.collectAsState()
+
     val acertos by viewModel.acertos.collectAsState()
 
     var entrada by remember { mutableStateOf("") }
