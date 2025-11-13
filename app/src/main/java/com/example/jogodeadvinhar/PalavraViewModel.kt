@@ -6,7 +6,20 @@ import kotlinx.coroutines.flow.asStateFlow
 
 class PalavraViewModel : ViewModel() {
 
-    private val palavras = listOf("Vinicius", "Gustavo", "Arthur", "Eduardo")
+    private val palavras = listOf(
+        "Leão",
+        "Tigre",
+        "Elefante",
+        "Girafa",
+        "Macaco",
+        "Cachorro",
+        "Gato",
+        "Coelho",
+        "Urso",
+        "Panda"
+    ).shuffled()
+
+
 
     private var indiceAtual = 0
 

@@ -62,7 +62,7 @@ fun TelaJogoPalavras(viewModel: PalavraViewModel = viewModel(),
                     contentAlignment = Alignment.Center
                 ) {
                     Text(
-                        text = "Digite o nome que estou pensando...",
+                        text = "Digite o nome de um animal...",
                         color = Color.Black.copy(alpha = 0.7f),
                         style = MaterialTheme.typography.bodyLarge,
                         fontWeight = FontWeight.SemiBold
