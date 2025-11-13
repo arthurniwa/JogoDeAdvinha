@@ -1,6 +1,5 @@
 package com.example.jogodeadvinhar
 
-
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -18,11 +17,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TelaJogar(navController: NavController) {
-
 
     val modoSelecionado = "imagem"
     val nivel = "15+"
@@ -64,7 +61,6 @@ fun TelaJogar(navController: NavController) {
             )
         },
         bottomBar = {
-            // Barra de navegação inferior como na imagem
             BottomAppBar(
                 containerColor = Color.White,
                 contentColor = corFundoRoxa,
@@ -74,7 +70,7 @@ fun TelaJogar(navController: NavController) {
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceAround
                 ) {
-                    IconButton(onClick = { navController.popBackStack() }) { // Volta para a Tela1 (Home)
+                    IconButton(onClick = { navController.popBackStack() }) {
                         Icon(Icons.Default.Home, contentDescription = "Início")
                     }
                     IconButton(onClick = { /* TODO: Navegar para Ranking */ }) {
@@ -97,7 +93,6 @@ fun TelaJogar(navController: NavController) {
             verticalArrangement = Arrangement.spacedBy(24.dp)
         ) {
 
-            // Cartão 1: Escolha um modo
             Surface(
                 shape = RoundedCornerShape(20.dp),
                 color = Color.White,
@@ -113,7 +108,6 @@ fun TelaJogar(navController: NavController) {
                     )
                     Spacer(Modifier.height(16.dp))
 
-                    // Jogo da Imagem
                     ModoJogoItem(
                         text = "Adivinhação de Imagem",
                         icon = Icons.Default.AccountBox,
@@ -123,7 +117,7 @@ fun TelaJogar(navController: NavController) {
 
                     ModoJogoItem(
                         text = "Adivinhação de Palavra",
-                        icon = Icons.Default.Edit, // Ícone para texto
+                        icon = Icons.Default.Edit,
                         isSelected = modoSelecionado == "palavra"
                     )
 
@@ -146,43 +140,24 @@ fun TelaJogar(navController: NavController) {
                 }
             }
 
-
             // Cartões 2 e 3: Nível e Tempo
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.spacedBy(16.dp)
             ) {
-                // Cartão 2: Nível
                 InfoCard(
-                    icon = Icons.Default.KeyboardArrowUp, // Ícone de Nível
+                    icon = Icons.Default.KeyboardArrowUp,
                     title = "Nível",
                     value = nivel,
                     modifier = Modifier.weight(1f)
                 )
 
-                // Cartão 3: Tempo Médio
                 InfoCard(
-                    icon = Icons.Default.DateRange, // Ícone de Tempo
+                    icon = Icons.Default.DateRange,
                     title = "Tempo Médio",
                     value = tempo,
                     modifier = Modifier.weight(1f)
                 )
-            }
-
-            Spacer(Modifier.weight(1f)) // Empurra o botão "Começar" para baixo
-
-            // Botão Começar
-            Button(
-                onClick = { /* TODO */ },
-                colors = ButtonDefaults.buttonColors(containerColor = corBotaoLaranja),
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(56.dp),
-                shape = RoundedCornerShape(16.dp)
-            ) {
-                Icon(Icons.Default.PlayArrow, contentDescription = null)
-                Spacer(Modifier.width(8.dp))
-                Text("COMEÇAR", fontSize = 16.sp, fontWeight = FontWeight.Bold)
             }
         }
     }
@@ -190,7 +165,7 @@ fun TelaJogar(navController: NavController) {
 
 @Composable
 fun ModoJogoItem(text: String, icon: ImageVector, isSelected: Boolean) {
-    val borderColor = if (isSelected) Color(0xFF4CAF50) else Color.LightGray // Verde se selecionado
+    val borderColor = if (isSelected) Color(0xFF4CAF50) else Color.LightGray
     val contentColor = if (isSelected) Color.Black else Color.Gray
     val iconColor = if (isSelected) borderColor else Color.Gray
 
