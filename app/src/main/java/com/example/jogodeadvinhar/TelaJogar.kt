@@ -48,7 +48,7 @@ fun TelaJogar(navController: NavController) {
                     }
                 },
                 navigationIcon = {
-                    IconButton(onClick = { navController.popBackStack() }) {
+                    IconButton(onClick = { navController.navigate("tela_inicial") }) {
                         Icon(Icons.Default.ArrowBack, contentDescription = "Voltar")
                     }
                 },
@@ -281,5 +281,6 @@ fun InfoCard(
                 )
             }
         }
+
     }
 }
