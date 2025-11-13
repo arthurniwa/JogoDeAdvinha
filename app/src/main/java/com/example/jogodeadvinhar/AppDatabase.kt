@@ -10,7 +10,7 @@ import com.example.jogodeadvinhar.Nome
 @Database(
     entities = [Pontuacao::class, Nome::class, Lista::class],
 
-    version = 3
+    version = 4
 )
 abstract class AppDatabase : RoomDatabase() {
 
