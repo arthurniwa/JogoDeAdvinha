@@ -28,15 +28,31 @@ fun TelaJogoPalavras(viewModel: PalavraViewModel = viewModel(),
     val CardFundo = Color(0xFFE1BEE7)
     val BotaoRoxo = Color(0xFF9C27B0)
 
+
     Box(
         modifier = Modifier
             .fillMaxSize()
             .background(FundoPrincipal)
     ) {
+        TextButton(
+            onClick = { navController.navigate("tela_jogar") },
+            modifier = Modifier
+                .align(Alignment.TopEnd)
+                .padding(16.dp)
+        ) {
+            Text(
+                text = "Sair",
+                color = Color.White,
+                fontWeight = FontWeight.Bold
+            )
+        }
+
+        Spacer(modifier = Modifier.height(20.dp))
+
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(top = 24.dp, start = 16.dp, end = 16.dp),
+                .padding(top = 45.dp, start = 16.dp, end = 16.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             // Título
